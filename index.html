@@ -721,7 +721,7 @@
 <div class="screen" id="game">
   <div class="game-header">
     <div class="player-name" id="displayName">👤 Jugador</div>
-    <div class="question-label" id="questionCount">1 / 20</div>
+    <div class="question-label" id="questionCounter">1 / 20</div>
     <div class="score-display">⭐ <span id="scoreDisplay">0</span></div>
   </div>
 
@@ -838,9 +838,9 @@
 <script>
   // ─── DATA ───────────────────────────────────────────────────────
   const allWords = [
-    { word: "CAFÉ",      syllables: ["CA","FÉ"],           stressed: 1, type: "aguda",     hasTilde: true },
+    { word: "CAFÉ",      syllables: ["CA","FÉ"],          stressed: 1, type: "aguda",     hasTilde: true },
     { word: "CANCIÓN",   syllables: ["CAN","CIÓN"],        stressed: 1, type: "aguda",     hasTilde: true },
-    { word: "CAMIÓN",    syllables: ["CA","MI",ÓN"],       stressed: 1, type: "aguda",     hasTilde: true },
+    { word: "CAMIÓN",    syllables: ["CA","MI","ÓN"],         stressed: 1, type: "aguda",     hasTilde: true },
     { word: "PAPEL",     syllables: ["PA","PEL"],          stressed: 1, type: "aguda",     hasTilde: false },
     { word: "RELOJ",     syllables: ["RE","LOJ"],          stressed: 1, type: "aguda",     hasTilde: false },
     { word: "CIUDAD",    syllables: ["CIU","DAD"],         stressed: 1, type: "aguda",     hasTilde: false },
@@ -848,7 +848,6 @@
     { word: "SOFÁ",      syllables: ["SO","FÁ"],           stressed: 1, type: "aguda",     hasTilde: true },
     { word: "CASA",      syllables: ["CA","SA"],           stressed: 0, type: "llana",     hasTilde: false },
     { word: "MESA",      syllables: ["ME","SA"],           stressed: 0, type: "llana",     hasTilde: false },
-	{ word: "PERRO",     syllables: ["PE","RRO"],          stressed: 0, type: "llana",     hasTilde: false },
     { word: "ÁRBOL",     syllables: ["ÁR","BOL"],          stressed: 0, type: "llana",     hasTilde: true },
     { word: "LÁPIZ",     syllables: ["LÁ","PIZ"],          stressed: 0, type: "llana",     hasTilde: true },
     { word: "DIFÍCIL",   syllables: ["DI","FÍ","CIL"],     stressed: 1, type: "llana",     hasTilde: true },
@@ -864,7 +863,7 @@
     { word: "PÚBLICO",   syllables: ["PÚ","BLI","CO"],     stressed: 0, type: "esdrujula", hasTilde: true },
     { word: "TÍPICO",    syllables: ["TÍ","PI","CO"],      stressed: 0, type: "esdrujula", hasTilde: true },
     { word: "MIÉRCOLES", syllables: ["MIÉR","CO","LES"],   stressed: 0, type: "esdrujula", hasTilde: true },
-    { word: "EXAMEN",    syllables: ["E","XA","MEN"],      stressed: 1, type: "llana",     hasTilde: false },
+    { word: "EXAMEN",    syllables: ["EX","A","MEN"],      stressed: 1, type: "llana",     hasTilde: false },
     { word: "IMAGEN",    syllables: ["I","MA","GEN"],      stressed: 1, type: "llana",     hasTilde: false },
     { word: "VOLCÁN",    syllables: ["VOL","CÁN"],         stressed: 1, type: "aguda",     hasTilde: true },
     { word: "JARDÍN",    syllables: ["JAR","DÍN"],         stressed: 1, type: "aguda",     hasTilde: true },
@@ -925,7 +924,7 @@
     selectedStressed = null;
 
     const q = questions[current];
-    document.getElementById("questionCount").textContent = (current + 1) + " / " + totalQuestions;
+    document.getElementById("questionCounter").textContent = (current + 1) + " / " + totalQuestions;
     document.getElementById("scoreDisplay").textContent = score;
     document.getElementById("progressBar").style.width = ((current / totalQuestions) * 100) + "%";
 
