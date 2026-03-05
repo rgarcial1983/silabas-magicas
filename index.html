@@ -158,6 +158,33 @@
     background: white;
   }
 
+  .welcome-card select {
+    width: 100%;
+    padding: 14px 18px;
+    border: 3px solid #E2E8F0;
+    border-radius: 14px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    margin-bottom: 20px;
+    background: #F7FAFC;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23A78BFA' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 44px;
+    cursor: pointer;
+  }
+  .welcome-card select:focus {
+    border-color: var(--esdrujula);
+    box-shadow: 0 0 0 4px rgba(167,139,250,0.2);
+    background-color: white;
+  }
+
   .btn-start {
     width: 100%;
     padding: 16px;
@@ -678,6 +705,12 @@
   <div class="welcome-card">
     <label for="playerName">¿Cómo te llamas? 👇</label>
     <input type="text" id="playerName" placeholder="Escribe tu nombre..." maxlength="20" autocomplete="off">
+    <label for="numQuestions">¿Cuántas preguntas quieres? 🎯</label>
+    <select id="numQuestions">
+      <option value="5">5 preguntas — ¡Rápido!</option>
+      <option value="10">10 preguntas — Normal</option>
+      <option value="20" selected>20 preguntas — ¡Completo!</option>
+    </select>
     <button class="btn-start" onclick="startGame()">🚀 ¡Empezar!</button>
   </div>
 
@@ -730,7 +763,7 @@
     <div class="result-name" id="resultName">¡Enhorabuena!</div>
     <div class="result-message" id="resultMessage">¡Lo has hecho increíble!</div>
     <div class="score-big" id="scoreBig">200</div>
-    <div class="score-label">puntos de 200</div>
+    <div class="score-label" id="scoreLabel">puntos de 200</div>
     <div class="stars-row" id="starsRow">⭐⭐⭐⭐⭐</div>
     <button class="btn-play-again" onclick="resetGame()">🔄 ¡Jugar de nuevo!</button>
     <button class="btn-review" onclick="openModal()" style="display:block;max-width:none">📖 Repasar las reglas</button>
@@ -759,7 +792,7 @@
       <div class="rule">📌 Llevan tilde cuando terminan en <strong>vocal, -n o -s</strong></div>
       <div class="examples">
         <span class="ex-tag">ca-FÉ ✓</span>
-        <span class="ex-tag">ca-mi-ÓN ✓</span>
+        <span class="ex-tag">can-CIÓN ✓</span>
         <span class="ex-tag">pa-RED ✗</span>
         <span class="ex-tag">re-LOJ ✗</span>
         <span class="ex-tag">a-MOR ✗</span>
@@ -772,10 +805,10 @@
       <div class="rule">📌 Llevan tilde cuando <strong>NO terminan</strong> en vocal, -n o -s</div>
       <div class="examples">
         <span class="ex-tag">CA-sa ✗</span>
-        <span class="ex-tag">ME-sa ✗</span>
+        <span class="ex-tag">CA-men ✗</span>
         <span class="ex-tag">LÁ-piz ✓</span>
-        <span class="ex-tag">FÁ-fil ✓</span>
-        <span class="ex-tag">ÁR-bol ✓</span>
+        <span class="ex-tag">DÍ-fil ✓</span>
+        <span class="ex-tag">ár-bol ✓</span>
       </div>
     </div>
 
@@ -787,7 +820,7 @@
         <span class="ex-tag">MÚ-si-ca ✓</span>
         <span class="ex-tag">MÉ-di-co ✓</span>
         <span class="ex-tag">PÁ-ja-ro ✓</span>
-        <span class="ex-tag">CÁ-ma-ra ✓</span>
+        <span class="ex-tag">ca-MÁ-ra ✓</span>
       </div>
     </div>
 
@@ -805,7 +838,7 @@
 <script>
   // ─── DATA ───────────────────────────────────────────────────────
   const allWords = [
-    { word: "CAFÉ",      syllables: ["CA","FÉ"],          stressed: 1, type: "aguda",     hasTilde: true },
+    { word: "CAFÉ",      syllables: ["CA","FÉ"],           stressed: 1, type: "aguda",     hasTilde: true },
     { word: "CANCIÓN",   syllables: ["CAN","CIÓN"],        stressed: 1, type: "aguda",     hasTilde: true },
     { word: "CAMIÓN",    syllables: ["CA","MIÓN"],         stressed: 1, type: "aguda",     hasTilde: true },
     { word: "PAPEL",     syllables: ["PA","PEL"],          stressed: 1, type: "aguda",     hasTilde: false },
@@ -815,6 +848,7 @@
     { word: "SOFÁ",      syllables: ["SO","FÁ"],           stressed: 1, type: "aguda",     hasTilde: true },
     { word: "CASA",      syllables: ["CA","SA"],           stressed: 0, type: "llana",     hasTilde: false },
     { word: "MESA",      syllables: ["ME","SA"],           stressed: 0, type: "llana",     hasTilde: false },
+	{ word: "PERRO",     syllables: ["PE","RRO"],          stressed: 0, type: "llana",     hasTilde: false },
     { word: "ÁRBOL",     syllables: ["ÁR","BOL"],          stressed: 0, type: "llana",     hasTilde: true },
     { word: "LÁPIZ",     syllables: ["LÁ","PIZ"],          stressed: 0, type: "llana",     hasTilde: true },
     { word: "DIFÍCIL",   syllables: ["DI","FÍ","CIL"],     stressed: 1, type: "llana",     hasTilde: true },
@@ -830,7 +864,7 @@
     { word: "PÚBLICO",   syllables: ["PÚ","BLI","CO"],     stressed: 0, type: "esdrujula", hasTilde: true },
     { word: "TÍPICO",    syllables: ["TÍ","PI","CO"],      stressed: 0, type: "esdrujula", hasTilde: true },
     { word: "MIÉRCOLES", syllables: ["MIÉR","CO","LES"],   stressed: 0, type: "esdrujula", hasTilde: true },
-    { word: "EXAMEN",    syllables: ["E","XA","MEN"],      stressed: 1, type: "llana",     hasTilde: true },
+    { word: "EXAMEN",    syllables: ["E","XA","MEN"],      stressed: 1, type: "llana",     hasTilde: false },
     { word: "IMAGEN",    syllables: ["I","MA","GEN"],      stressed: 1, type: "llana",     hasTilde: false },
     { word: "VOLCÁN",    syllables: ["VOL","CÁN"],         stressed: 1, type: "aguda",     hasTilde: true },
     { word: "JARDÍN",    syllables: ["JAR","DÍN"],         stressed: 1, type: "aguda",     hasTilde: true },
@@ -839,6 +873,7 @@
 
   // ─── STATE ───────────────────────────────────────────────────────
   let playerName = "";
+  let totalQuestions = 20;
   let questions = [];
   let current = 0;
   let score = 0;
@@ -873,7 +908,8 @@
       return;
     }
     playerName = inp;
-    questions = shuffle(allWords).slice(0, 20);
+    totalQuestions = parseInt(document.getElementById("numQuestions").value);
+    questions = shuffle(allWords).slice(0, totalQuestions);
     current = 0;
     score = 0;
     selectedType = null;
@@ -889,36 +925,44 @@
     selectedStressed = null;
 
     const q = questions[current];
-    document.getElementById("questionCount").textContent = (current + 1) + " / 20";
+    document.getElementById("questionCount").textContent = (current + 1) + " / " + totalQuestions;
     document.getElementById("scoreDisplay").textContent = score;
-    document.getElementById("progressBar").style.width = ((current / 20) * 100) + "%";
+    document.getElementById("progressBar").style.width = ((current / totalQuestions) * 100) + "%";
 
     // Word display
     document.getElementById("wordDisplay").textContent = q.word;
 
-    // Syllables
+    // Syllables — rebuild completely
     const area = document.getElementById("syllableArea");
     area.innerHTML = "";
     q.syllables.forEach((syl, i) => {
       const btn = document.createElement("button");
       btn.className = "syllable-bubble";
       btn.textContent = syl;
-      btn.onclick = () => markStressed(i, q.syllables.length);
       btn.dataset.index = i;
+      btn.addEventListener("click", function() { markStressed(i); });
       area.appendChild(btn);
     });
 
-    // Reset type buttons
-    document.querySelectorAll(".type-btn").forEach(b => b.classList.remove("selected"));
-    document.getElementById("confirmBtn").classList.remove("ready");
+    // Reset type buttons — remove selected class AND re-attach onclick cleanly
+    document.querySelectorAll(".type-btn").forEach(b => {
+      b.classList.remove("selected");
+      b.disabled = false;
+    });
 
-    // Reset card animation
+    // Reset confirm button fully
+    const confirmBtn = document.getElementById("confirmBtn");
+    confirmBtn.classList.remove("ready");
+    confirmBtn.disabled = false;
+
+    // Animate card in
     const card = document.getElementById("wordCard");
     card.style.animation = "none";
-    requestAnimationFrame(() => { card.style.animation = ""; });
+    void card.offsetWidth; // force reflow
+    card.style.animation = "cardIn 0.4s cubic-bezier(.68,-0.55,.27,1.55)";
   }
 
-  function markStressed(idx, total) {
+  function markStressed(idx) {
     document.querySelectorAll(".syllable-bubble").forEach((b, i) => {
       b.classList.toggle("stressed", i === idx);
     });
@@ -977,7 +1021,7 @@
   function nextQuestion() {
     document.getElementById("feedbackOverlay").classList.remove("show");
     current++;
-    if (current >= 20) {
+    if (current >= totalQuestions) {
       showResults();
     } else {
       loadQuestion();
@@ -986,9 +1030,11 @@
 
   function showResults() {
     showScreen("results");
+    const maxScore = totalQuestions * 10;
     document.getElementById("scoreBig").textContent = score;
+    document.getElementById("scoreLabel").textContent = "puntos de " + maxScore;
 
-    const pct = score / 200;
+    const pct = score / maxScore;
     let mascot, msg, stars;
 
     if (pct === 1) {
