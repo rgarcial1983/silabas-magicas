@@ -10,7 +10,7 @@ Una aplicación interactiva y divertida para que los niños aprendan a clasifica
 ## ✨ Características
 
 - 🎮 **Juego interactivo** — Identifica sílabas tónicas y clasifica palabras por tipo
-- 📱 **PWA Installable** — Instálala en tu móvil, tablet o navegador como app nativa
+- 📱 **PWA Installable** — Botón de instalación integrado en la app, instálala en un clic
 - 🔌 **Funciona offline** — Una vez cargada, funciona sin conexión a internet
 - 📊 **Gamificación** — Sistema de puntos y retroalimentación visual
 - 🎨 **Interfaz colorida** — Diseño atractivo para niños con animaciones suaves
@@ -27,21 +27,28 @@ Una aplicación interactiva y divertida para que los niños aprendan a clasifica
 
 ### Instalar como app
 
-#### En Android/Chrome
+#### 📱 Usando el botón dentro de la app (Recomendado)
+1. Abre [https://rgarcial1983.github.io/silabas-magicas/](https://rgarcial1983.github.io/silabas-magicas/)
+2. En la pantalla de bienvenida verás un botón **"📥 Instalar App"**
+3. Haz clic en el botón
+4. Confirma la instalación en el diálogo del navegador
+5. ¡La app aparecerá en tu pantalla de inicio o menú de aplicaciones!
+
+#### En Android/Chrome (Alternativa)
 1. Abre la app en Chrome
 2. Toca el menú ⋮ (tres puntos)
 3. Selecciona "Instalar aplicación"
 4. ¡La app se agregará a tu pantalla de inicio!
 
-#### En iPhone/Safari
+#### En iPhone/Safari (Alternativa)
 1. Abre la app en Safari
 2. Toca el botón Compartir
 3. Selecciona "Añadir a Pantalla de Inicio"
 4. ¡La app estará disponible como icono en tu home!
 
-#### En Escritorio (Chrome, Edge, etc.)
-1. Abre la app en tu navegador
-2. Busca el icono de instalación (generalmente en la barra de direcciones)
+#### En Escritorio (Alternativa)
+1. Abre la app en tu navegador (Chrome, Edge, etc.)
+2. Busca el icono de instalación (generalmente en la barra de direcciones o menú)
 3. Haz clic en "Instalar"
 
 ## 📋 Cómo jugar

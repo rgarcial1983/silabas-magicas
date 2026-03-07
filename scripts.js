@@ -226,3 +226,39 @@ function closeModalOnBg(e) {
 document.getElementById("playerName").addEventListener("keydown", e => {
   if (e.key === "Enter") startGame();
 });
+
+// ─── PWA INSTALLATION ───────────────────────────────────────────
+let deferredPrompt;
+
+window.addEventListener("beforeinstallprompt", e => {
+  // Prevent the mini-infobar from appearing on mobile
+  e.preventDefault();
+  // Stash the event for later use
+  deferredPrompt = e;
+  // Show install button
+  const installBtn = document.getElementById("btnInstall");
+  if (installBtn) installBtn.style.display = "block";
+});
+
+document.addEventListener("appinstalled", () => {
+  console.log("PWA installed successfully");
+  const installBtn = document.getElementById("btnInstall");
+  if (installBtn) installBtn.style.display = "none";
+});
+
+// Handle install button click
+const installBtn = document.getElementById("btnInstall");
+if (installBtn) {
+  installBtn.addEventListener("click", async () => {
+    if (!deferredPrompt) return;
+    // Show the install prompt
+    deferredPrompt.prompt();
+    // Wait for the user to respond
+    const choice = await deferredPrompt.userChoice;
+    // Clear the deferred prompt for reuse
+    deferredPrompt = null;
+    // Hide the install button
+    installBtn.style.display = "none";
+    console.log("User choice:", choice.outcome);
+  });
+}

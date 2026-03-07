@@ -1,5 +1,6 @@
 const CACHE_NAME = 'silabas-magicas-v1';
 const urlsToCache = [
+  './',
   './index.html',
   './estilos.css',
   './scripts.js',
