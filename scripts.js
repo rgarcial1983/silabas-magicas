@@ -1,36 +1,5 @@
 // ─── DATA ───────────────────────────────────────────────────────
-const allWords = [
-  { word: "CAFÉ",      syllables: ["CA","FÉ"],          stressed: 1, type: "aguda",     hasTilde: true },
-  { word: "CANCIÓN",   syllables: ["CAN","CI","ÓN"],     stressed: 1, type: "aguda",     hasTilde: true },
-  { word: "CAMIÓN",    syllables: ["CA","MI","ÓN"],      stressed: 1, type: "aguda",     hasTilde: true },
-  { word: "PAPEL",     syllables: ["PA","PEL"],          stressed: 1, type: "aguda",     hasTilde: false },
-  { word: "RELOJ",     syllables: ["RE","LOJ"],          stressed: 1, type: "aguda",     hasTilde: false },
-  { word: "CIUDAD",    syllables: ["CIU","DAD"],         stressed: 1, type: "aguda",     hasTilde: false },
-  { word: "MAMÁ",      syllables: ["MA","MÁ"],           stressed: 1, type: "aguda",     hasTilde: true },
-  { word: "SOFÁ",      syllables: ["SO","FÁ"],           stressed: 1, type: "aguda",     hasTilde: true },
-  { word: "CASA",      syllables: ["CA","SA"],           stressed: 0, type: "llana",     hasTilde: false },
-  { word: "MESA",      syllables: ["ME","SA"],           stressed: 0, type: "llana",     hasTilde: false },
-  { word: "ÁRBOL",     syllables: ["ÁR","BOL"],          stressed: 0, type: "llana",     hasTilde: true },
-  { word: "LÁPIZ",     syllables: ["LÁ","PIZ"],          stressed: 0, type: "llana",     hasTilde: true },
-  { word: "DIFÍCIL",   syllables: ["DI","FÍ","CIL"],     stressed: 1, type: "llana",     hasTilde: true },
-  { word: "FÁCIL",     syllables: ["FÁ","CIL"],          stressed: 0, type: "llana",     hasTilde: true },
-  { word: "NUBE",      syllables: ["NU","BE"],           stressed: 0, type: "llana",     hasTilde: false },
-  { word: "MÚSICA",    syllables: ["MÚ","SI","CA"],      stressed: 0, type: "esdrujula", hasTilde: true },
-  { word: "MÉDICO",    syllables: ["MÉ","DI","CO"],      stressed: 0, type: "esdrujula", hasTilde: true },
-  { word: "PÁJARO",    syllables: ["PÁ","JA","RO"],      stressed: 0, type: "esdrujula", hasTilde: true },
-  { word: "CÁMARA",    syllables: ["CÁ","MA","RA"],      stressed: 0, type: "esdrujula", hasTilde: true },
-  { word: "NÚMERO",    syllables: ["NÚ","ME","RO"],      stressed: 0, type: "esdrujula", hasTilde: true },
-  { word: "SÁBADO",    syllables: ["SÁ","BA","DO"],      stressed: 0, type: "esdrujula", hasTilde: true },
-  { word: "RÁPIDO",    syllables: ["RÁ","PI","DO"],      stressed: 0, type: "esdrujula", hasTilde: true },
-  { word: "PÚBLICO",   syllables: ["PÚ","BLI","CO"],     stressed: 0, type: "esdrujula", hasTilde: true },
-  { word: "TÍPICO",    syllables: ["TÍ","PI","CO"],      stressed: 0, type: "esdrujula", hasTilde: true },
-  { word: "MIÉRCOLES", syllables: ["MIÉR","CO","LES"],   stressed: 0, type: "esdrujula", hasTilde: true },
-  { word: "EXAMEN",    syllables: ["EX","A","MEN"],      stressed: 1, type: "llana",     hasTilde: false },
-  { word: "IMAGEN",    syllables: ["I","MA","GEN"],      stressed: 1, type: "llana",     hasTilde: false },
-  { word: "VOLCÁN",    syllables: ["VOL","CÁN"],         stressed: 1, type: "aguda",     hasTilde: true },
-  { word: "JARDÍN",    syllables: ["JAR","DÍN"],         stressed: 1, type: "aguda",     hasTilde: true },
-  { word: "LIBRO",     syllables: ["LI","BRO"],          stressed: 0, type: "llana",     hasTilde: false },
-];
+let allWords = [];
 
 // ─── STATE ───────────────────────────────────────────────────────
 let playerName = "";
@@ -40,6 +9,14 @@ let current = 0;
 let score = 0;
 let selectedType = null;
 let selectedStressed = null;
+
+// ─── LOAD WORDS FROM JSON ─────────────────────────────────────
+fetch("words.json")
+  .then(response => response.json())
+  .then(data => {
+    allWords = data;
+  })
+  .catch(error => console.error("Error loading words:", error));
 
 // ─── STARS BG ───────────────────────────────────────────────────
 const starEmojis = ["⭐","✨","🌟","💫","🔮","🎵","📚","🌈"];
