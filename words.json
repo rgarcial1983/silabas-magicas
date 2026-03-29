@@ -1,5 +1,4 @@
-[
-  /* --- AGUDAS (15 palabras) --- */
+[  
   { "word": "CANCIÓN", "syllables": ["CAN","CIÓN"], "stressed": 1, "type": "aguda", "hasTilde": true },
   { "word": "CAMIÓN", "syllables": ["CA","MIÓN"], "stressed": 1, "type": "aguda", "hasTilde": true },
   { "word": "PAPEL", "syllables": ["PA","PEL"], "stressed": 1, "type": "aguda", "hasTilde": false },
@@ -15,8 +14,7 @@
   { "word": "SALÓN", "syllables": ["SA","LÓN"], "stressed": 1, "type": "aguda", "hasTilde": true },
   { "word": "AZUL", "syllables": ["A","ZUL"], "stressed": 1, "type": "aguda", "hasTilde": false },
   { "word": "PERDÍ", "syllables": ["PER","DÍ"], "stressed": 1, "type": "aguda", "hasTilde": true },
-
-  /* --- LLANAS (15 palabras) --- */
+  
   { "word": "CASA", "syllables": ["CA","SA"], "stressed": 0, "type": "llana", "hasTilde": false },
   { "word": "NIÑO", "syllables": ["NI","ÑO"], "stressed": 0, "type": "llana", "hasTilde": false },
   { "word": "DIFÍCIL", "syllables": ["DI","FÍ","CIL"], "stressed": 1, "type": "llana", "hasTilde": true },
@@ -33,7 +31,6 @@
   { "word": "COCHE", "syllables": ["CO","CHE"], "stressed": 0, "type": "llana", "hasTilde": false },
   { "word": "FRÁGIL", "syllables": ["FRÁ","GIL"], "stressed": 0, "type": "llana", "hasTilde": true },
 
-  /* --- ESDRÚJULAS (15 palabras) --- */
   { "word": "CÁMARA", "syllables": ["CÁ","MA","RA"], "stressed": 0, "type": "esdrújula", "hasTilde": true },
   { "word": "PÁJARO", "syllables": ["PÁ","JA","RO"], "stressed": 0, "type": "esdrújula", "hasTilde": true },
   { "word": "SÁBADO", "syllables": ["SÁ","BA","DO"], "stressed": 0, "type": "esdrújula", "hasTilde": true },
